@@ -1,12 +1,19 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
-
+import { useDispatch } from "react-redux";
+import { notSil, notSilAPI } from "../actions";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 export default function Post({ item }) {
-
+ const dispatch=useDispatch();
   function handleSil() {
     // burada ilgili eylemi dispatch edin
     // sonra toast mesajı gösterin
+    dispatch(notSilAPI(item.id))
+     toast.warning("Not kaldırıldı",{
+      theme:"colored"
+     })
   }
 
   return (
